@@ -1,0 +1,35 @@
+image: https://i.etsystatic.com/12741197/r/il/6811cb/1432325325/il_fullxfull.1432325325_th8e.jpg
+width_base: 1
+height_base: 1
+
+items:
+  - name: Test
+    details: |-
+      Hello!
+    icon: null
+    click: null
+    submap: null
+    sound:
+     url: /18 Rogueport Sewers.mp3
+     loop: true
+     autostart: true
+    volume: 1
+    x: 0.25
+    z: 0.25
+    elevation: 0
+    range: 1
+  - name: Test2
+    details: |-
+      Hello2!
+    icon: null
+    click: null
+    submap: null
+    sound:
+     url: /09 Rogueport.mp3
+     loop: true
+     autostart: true
+    volume: 1
+    x: 0.75
+    z: 0.75
+    elevation: 0
+    range: 1

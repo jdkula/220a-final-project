@@ -47,7 +47,7 @@ items:
           range: 1
           volume: 1
           sound:
-            url: /sounds/Wilbur Dining/East, Evening, Dinner, Saturday/ZOOM0001.WAV
+            url: /sounds/Wilbur Dining/East, Evening, Dinner, Saturday/ZOOM0001.mp3
             loop: true
             autostart: true
         - name: Outside
@@ -65,11 +65,11 @@ items:
           range: 1
           volume: 0.8
           sound:
-            url: /sounds/Wilbur Dining/West, Afternoon, Sunday/ZOOM0001.WAV
+            url: /sounds/Wilbur Dining/West, Afternoon, Sunday/ZOOM0001.mp3
             loop: true
             autostart: true
     sound:
-     url: /sounds/Wilbur Dining/East, Evening, Dinner, Saturday/ZOOM0001.WAV
+     url: /sounds/Wilbur Dining/East, Evening, Dinner, Saturday/ZOOM0001.mp3
      loop: true
      autostart: true
     volume: 1

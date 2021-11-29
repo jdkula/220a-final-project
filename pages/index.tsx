@@ -1,24 +1,27 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import {
+import React, {
   MouseEventHandler,
   useCallback,
   useEffect,
+  useMemo,
   useReducer,
   useRef,
   useState,
 } from "react";
-import { Map } from "../lib/map";
-import styles from "../styles/Home.module.css";
+import { Map, MapItem } from "../lib/map";
 import YAML from "yaml";
 import MapContainer from "../lib/mapcontainer";
+import ReactMarkdown from "react-markdown";
+import Portal from "../lib/usePortal";
 
 const Home: NextPage = () => {
+  const [back, setBack] = useState<Map[]>([]);
   const [details, setDetails] = useState<Map | null>(null);
   const svgEl = useRef<SVGGraphicsElement | null>(null);
   const svgPt = useRef<SVGPoint | null>(null);
-  const mapConatiner = useRef<MapContainer | null>(null);
+  const mapContainer = useRef<MapContainer | null>(null);
 
   useEffect(() => {
     fetch("/_map.yaml")
@@ -30,63 +33,166 @@ const Home: NextPage = () => {
   useEffect(() => {
     if (!details) return;
 
-    if (!mapConatiner.current) {
-      mapConatiner.current = new MapContainer(details);
+    if (!mapContainer.current) {
+      mapContainer.current = new MapContainer(details);
     } else {
-      mapConatiner.current.load_new_map(details);
+      mapContainer.current.loadNewMap(details);
     }
   }, [details]);
 
-  const onMouseMove: MouseEventHandler<SVGSVGElement> = useCallback((evt) => {
-    const pt = svgPt.current;
-    const svg = svgEl.current;
-    if (!pt || !svg) return;
+  const getCursorPt = useCallback(
+    (evt: React.MouseEvent): { x: number; y: number } | null => {
+      const pt = svgPt.current;
+      const svg = svgEl.current;
+      if (!pt || !svg) return null;
 
-    pt.x = evt.clientX;
-    pt.y = evt.clientY;
-    const cursorpt = pt.matrixTransform(svg.getScreenCTM()?.inverse());
-    if (mapConatiner.current) {
-      mapConatiner.current.update_my_position(cursorpt.x, cursorpt.y);
+      pt.x = evt.clientX;
+      pt.y = evt.clientY;
+      const cursorpt = pt.matrixTransform(svg.getScreenCTM()?.inverse());
+      return { x: cursorpt.x, y: cursorpt.y };
+    },
+    []
+  );
+
+  const onMouseMove: MouseEventHandler<SVGSVGElement> = useCallback(
+    (evt) => {
+      const cursorpt = getCursorPt(evt);
+      if (cursorpt && mapContainer.current) {
+        mapContainer.current.updatePosition(cursorpt.x, cursorpt.y);
+      }
+    },
+    [getCursorPt]
+  );
+
+  const onClick = useCallback(
+    (item: MapItem) => {
+      console.log(`Clicked item ${item.name}`);
+      const submap = mapContainer.current?.clickItem(item);
+      if (submap && details) {
+        setBack((back) => [...back, details]);
+        setDetails(submap);
+      }
+    },
+    [details]
+  );
+
+  const onDebugClick: MouseEventHandler<SVGSVGElement> = useCallback(
+    (evt) => {
+      const cursorpt = getCursorPt(evt);
+      if (cursorpt) {
+        console.log("Clicked on canvas:", cursorpt);
+      }
+    },
+    [getCursorPt]
+  );
+
+  const onBack = useCallback(() => {
+    if (back.length > 0) {
+      setDetails(back[back.length - 1]);
+      setBack((back) => back.slice(0, back.length - 1));
     }
-  }, []);
+  }, [back]);
 
   return (
     <div>
       <Head>
         <title>Final Project</title>
       </Head>
+      <div>
+        <button onClick={() => mapContainer.current?.start()}>Start</button>
+      </div>
       {/* <pre>{JSON.stringify(details, null, 2)}</pre> */}
-      {details && (
-        <svg
-          style={{ position: "relative" }}
-          width={1000}
-          height={1000}
-          viewBox={`0 0 ${details.width_base} ${details.height_base}`}
-          ref={(el) => {
-            svgPt.current = el?.createSVGPoint() ?? null;
-            svgEl.current = el;
-          }}
-          onMouseMove={onMouseMove}
-        >
-          <image
-            href={details.image}
-            width={details.width_base}
-            height={details.height_base}
-            opacity={0.5}
-          />
-          {details.items.map((item) => (
-            <rect
-              key={item.name}
-              x={item.x}
-              y={item.z}
-              width={details.width_base / 50}
-              height={details.height_base / 50}
-              fill="black"
-            ></rect>
-          ))}
-        </svg>
-      )}
+      <div>{back.length > 0 && <button onClick={onBack}>Back</button>}</div>
+      <div>
+        {details && (
+          <svg
+            style={{ position: "relative", userSelect: "none" }}
+            width={1000}
+            height={1000}
+            viewBox={`0 0 ${details.width_base} ${details.height_base}`}
+            ref={(el) => {
+              svgPt.current = el?.createSVGPoint() ?? null;
+              svgEl.current = el;
+            }}
+            onMouseMove={onMouseMove}
+            onDoubleClick={onDebugClick}
+          >
+            <image
+              href={details.image}
+              width={details.width_base}
+              height={details.height_base}
+              opacity={0.8}
+            />
+            {details.items.map((item) => (
+              <ItemEl
+                key={item.name}
+                item={item}
+                map={details}
+                onClick={() => onClick(item)}
+              />
+            ))}
+          </svg>
+        )}
+      </div>
     </div>
+  );
+};
+
+const ItemEl = ({
+  item,
+  map,
+  onClick,
+}: {
+  item: MapItem;
+  map: Map;
+  onClick: (item: MapItem) => void;
+}) => {
+  const width = (map.width_base / 50) * item.size;
+  const height = (map.height_base / 50) * item.size;
+
+  const Base = item.icon ? "image" : "rect";
+  const extra = item.icon ? { href: item.icon } : {};
+
+  const x = item.x - width / 2 + ((item.offset_x ?? 0) / item.size) * width;
+  const y = item.z - height / 2 + ((item.offset_y ?? 0) / item.size) * height;
+
+  const [tooltipShown, setTooltip] = useState(false);
+
+  const [mouseLoc, setMouseLoc] = useState({ x: 0, y: 0 });
+
+  const md = useMemo(() => <ReactMarkdown>{item.details}</ReactMarkdown>, [item])
+
+  return (
+    <Base
+      x={x}
+      y={y}
+      width={width}
+      height={height}
+      fill="black"
+      onClick={() => onClick(item)}
+      style={{ cursor: item.click ? "pointer" : "help" }}
+      onMouseEnter={() => setTooltip(true)}
+      onMouseLeave={() => setTooltip(false)}
+      onMouseMove={(evt) => setMouseLoc({ x: evt.clientX, y: evt.clientY })}
+      {...extra}
+    >
+      <Portal>
+        {tooltipShown && (
+          <div
+            style={{
+              position: "fixed",
+              top: mouseLoc.y + 20,
+              left: mouseLoc.x,
+              background: "white",
+              padding: '10px',
+              opacity: 0.7
+            }}
+          >
+            {md}
+          </div>
+        )}
+      </Portal>
+    </Base>
   );
 };
 export default Home;

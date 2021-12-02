@@ -4,71 +4,84 @@ crop_bottom: 0.10
 crop_left: 0.15
 crop_right: 0.15
 scale: 2
+distance_multiplier: 2
 
 items:
   - name: Wilbur
     details: |-
-      # Wilbur
-      Wilbur complex
-    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Google_Maps_pin.svg/274px-Google_Maps_pin.svg.png
+      ## Wilbur
+      **Wilbur Hall** is a large residence complex with 8 dorms inside of it:
+      Arroyo, Cedro, Junipero (J-ro), Okada (Asian-American theme dorm),
+      Otero (Public Service dorm), Rinconada (Rinc), Soto, and Trancos.
+
+      There's a dining hall here where I took recordings. Click the blue pin to
+      see in more detail!
+    icon: /icon/maps pin green.png
+    sound:
+      url: /sounds/Wilbur Dining/East, Evening, Dinner, Saturday/ZOOM0001.mp3
+      loop: true
+      autostart: true
+    volume: 0.7
+    x: 0.66299
+    z: 0.75499
+    size: 4
+    offset_y: -2
     click: submap
     submap:
       image: /img/wilbur.png
       items:
         - name: Inside
-          icon: https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png
+          icon: /icon/maps pin.png
           details: |-
-            ## Inside Wilbur
-            (details)
-          click: null
-          submap: null
-          trigger: null
+            ## Inside Wilbur Dining Hall
+            
+            Wilbur dining hall is known mostly for its brunches and phở – although
+            since COVID-19 I haven’t seen phở as often.
+
+            This recording was taken on the east side of wilbur dining, during a
+            Saturday dinner period. Moderately busy, but not *too* busy!
           x: 0.609
           z: 0.5419
           size: 4
-          elevation: 0
-          range: 1
+          offset_y: -2
           volume: 0.7
           sound:
             url: /sounds/Wilbur Dining/East, Evening, Dinner, Saturday/ZOOM0001.mp3
             loop: true
             autostart: true
         - name: Outside
-          icon: https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png
+          icon: /icon/maps pin.png
           details: |-
-            ## Outside Wilbur
-            (details)
-          click: null
-          submap: null
-          trigger: null
+            ## Outside Wilbur Dining
+            
+            Right on the west side of Wilbur, there’s a nice outdoor seating area that
+            lies in the space between Trancos, Soto, Rinc, and Otero. You get a bit of the
+            sound of others dining – especially since COVID-19, more people eat outside –
+            mixed with the sounds of doors unlocking and opening, and bird song.
           x: 0.2969
           z: 0.467
           size: 4
-          elevation: 0
-          range: 1
+          offset_y: -2
           volume: 0.7
           sound:
             url: /sounds/Wilbur Dining/West, Afternoon, Sunday/ZOOM0001.mp3
             loop: true
             autostart: true
-    sound:
-     url: /sounds/Wilbur Dining/East, Evening, Dinner, Saturday/ZOOM0001.mp3
-     loop: true
-     autostart: true
-    volume: 0.7
-    x: 0.66299
-    z: 0.75499
-    size: 4
-    offset_y: -2
   - name: EVGR B Courtyard
     details: |-
-      # EVGR B Courtyard
-      Recorded around 2PM
-    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Google_Maps_pin.svg/274px-Google_Maps_pin.svg.png
+      ## EVGR B Courtyard
+
+      Between two extrusions in EVGR B, there's a little couryard – there’s
+      a grill, some trees (which house *very* chatty birds), a fire pit,
+      and some benches for people to sit and work or gather at. (It’s also right
+      next to a spot where you can pick up Color COVID tests!)
+
+      I recorded this soundscape around 2PM on Tuesday 11/30, after dropping off a COVID test.
+    icon: /icon/maps pin.png
     sound:
-     url: /sounds/EVGR/B Courtyard 2PM/ZOOM0003.mp3
-     loop: true
-     autostart: true
+      url: /sounds/EVGR/B Courtyard 2PM/ZOOM0003.mp3
+      loop: true
+      autostart: true
     volume: 1
     x: 0.814
     z: 0.702
@@ -76,13 +89,19 @@ items:
     offset_y: -2
   - name: EVGR Roundabout
     details: |-
-      # EVGR Roundabout
-      Recorded around 2:20PM
-    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Google_Maps_pin.svg/274px-Google_Maps_pin.svg.png
+      ## EVGR Roundabout
+
+      I don’t know if this roundabout has a name per se, but it’s next to EVGR,
+      Mirrielees, Wilbur, and Casper Quad. You’ll hear a lot of cars here – more
+      cars than people, actually, although you’ll get the passing conversation
+      or sound of bikers.
+
+      I recorded this around 2:20PM on Tuesday 11/30
+    icon: /icon/maps pin.png
     sound:
-     url: /sounds/EVGR/Roundabout/ZOOM0005.mp3
-     loop: true
-     autostart: true
+      url: /sounds/EVGR/Roundabout/ZOOM0005.mp3
+      loop: true
+      autostart: true
     volume: 1
     x: 0.736999
     z: 0.75099
@@ -91,12 +110,12 @@ items:
   - name: Munger/Stern area
     details: |-
       # Munger/Stern area
-      Recorded around 2:40PM
-    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Google_Maps_pin.svg/274px-Google_Maps_pin.svg.png
+      I recorded this around 2:40PM on Tuesday 11/30
+    icon: /icon/maps pin.png
     sound:
-     url: /sounds/Munger Stern 230PM/SPTL003.mp3
-     loop: true
-     autostart: true
+      url: /sounds/Munger Stern 230PM/SPTL003.mp3
+      loop: true
+      autostart: true
     volume: 1
     x: 0.566999
     z: 0.759
@@ -105,12 +124,12 @@ items:
   - name: Lake Lag
     details: |-
       # Lake Lag
-      Recorded around 3:20PM
-    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Google_Maps_pin.svg/274px-Google_Maps_pin.svg.png
+      I recorded this around 3:20PM on Tuesday 11/30
+    icon: /icon/maps pin.png
     sound:
-     url: /sounds/Lake Lag/SPTL004.mp3
-     loop: true
-     autostart: true
+      url: /sounds/Lake Lag/SPTL004.mp3
+      loop: true
+      autostart: true
     volume: 10
     x: 0.25
     z: 0.735
@@ -119,12 +138,12 @@ items:
   - name: AOREC
     details: |-
       # AOREC Poolside
-      Recorded around 3:40PM
-    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Google_Maps_pin.svg/274px-Google_Maps_pin.svg.png
+      I recorded this around 3:40PM on Tuesday 11/30
+    icon: /icon/maps pin.png
     sound:
-     url: /sounds/AOREC/SPTL005.mp3
-     loop: true
-     autostart: true
+      url: /sounds/AOREC/SPTL005.mp3
+      loop: true
+      autostart: true
     volume: 5
     x: 0.270999
     z: 0.66299
@@ -133,12 +152,12 @@ items:
   - name: Terman Fountain
     details: |-
       # Terman Fountain
-      Recorded around 4PM
-    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Google_Maps_pin.svg/274px-Google_Maps_pin.svg.png
+      I recorded this around 4PM on Tuesday 11/30
+    icon: /icon/maps pin.png
     sound:
-     url: /sounds/Terman Fountain/SPTL006.mp3
-     loop: true
-     autostart: true
+      url: /sounds/Terman Fountain/SPTL006.mp3
+      loop: true
+      autostart: true
     volume: 5
     x: 0.365
     z: 0.681999
@@ -147,44 +166,44 @@ items:
   - name: Green Library
     details: |-
       # Green Library
-      Recorded around 4:40PM
-    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Google_Maps_pin.svg/274px-Google_Maps_pin.svg.png
+      I recorded this around 4:40PM on Tuesday 11/30
+    icon: /icon/maps pin.png
     click: submap
     submap:
       image: /img/meyer_green.png
       items:
-      - name: Lane Reading Room
-        details: |-
-          # Lane Reading Room
-          Recorded around 4:40PM
-        icon: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Google_Maps_pin.svg/274px-Google_Maps_pin.svg.png
-        sound:
-          url: /sounds/Green Library/Lane Reading Room/SPTL008.mp3
-          loop: true
-          autostart: true
-        volume: 5
-        x: 0.612999
-        z: 0.224
-        size: 4
-        offset_y: -2
-      - name: Outside Bing Wing
-        details: |-
-          # Just Outside the Bing Wing
-          Recorded around 5:00PM
-        icon: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Google_Maps_pin.svg/274px-Google_Maps_pin.svg.png
-        sound:
-          url: /sounds/Green Library/Outside Bing Wing 4PM/SPTL010.mp3
-          loop: true
-          autostart: true
-        volume: 5
-        x: 0.367
-        z: 0.212999
-        size: 4
-        offset_y: -2
+        - name: Lane Reading Room
+          details: |-
+            # Lane Reading Room
+            I recorded this around 4:40PM on Tuesday 11/30
+          icon: /icon/maps pin.png
+          sound:
+            url: /sounds/Green Library/Lane Reading Room/SPTL008.mp3
+            loop: true
+            autostart: true
+          volume: 5
+          x: 0.612999
+          z: 0.224
+          size: 4
+          offset_y: -2
+        - name: Outside Bing Wing
+          details: |-
+            # Just Outside the Bing Wing
+            I recorded this around 5PM on Tuesday 11/30
+          icon: /icon/maps pin.png
+          sound:
+            url: /sounds/Green Library/Outside Bing Wing 4PM/SPTL010.mp3
+            loop: true
+            autostart: true
+          volume: 5
+          x: 0.367
+          z: 0.212999
+          size: 4
+          offset_y: -2
     sound:
-     url: /sounds/Green Library/Lane Reading Room/SPTL008.mp3
-     loop: true
-     autostart: true
+      url: /sounds/Green Library/Lane Reading Room/SPTL008.mp3
+      loop: true
+      autostart: true
     volume: 5
     x: 0.559
     z: 0.648
@@ -193,12 +212,12 @@ items:
   - name: The Oval
     details: |-
       # The bottom of the oval
-      Recorded around 5:20PM
-    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Google_Maps_pin.svg/274px-Google_Maps_pin.svg.png
+      I recorded this around 5:20PM on Tuesday 11/30
+    icon: /icon/maps pin.png
     sound:
-     url: /sounds/Oval/SPTL011.mp3
-     loop: true
-     autostart: true
+      url: /sounds/Oval/SPTL011.mp3
+      loop: true
+      autostart: true
     volume: 2
     x: 0.476999
     z: 0.575999
@@ -207,12 +226,12 @@ items:
   - name: Clarke Center
     details: |-
       # Clarke Center
-      Recorded around 5:40PM
-    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Google_Maps_pin.svg/274px-Google_Maps_pin.svg.png
+      I recorded this around 5:40PM on Tuesday 11/30
+    icon: /icon/maps pin.png
     sound:
-     url: /sounds/Clarke Center/SPTL013.mp3
-     loop: true
-     autostart: true
+      url: /sounds/Clarke Center/SPTL013.mp3
+      loop: true
+      autostart: true
     volume: 2
     x: 0.342999
     z: 0.495999
@@ -221,62 +240,64 @@ items:
   - name: Central Campus
     details: |-
       # TODO
-    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Google_Maps_pin.svg/274px-Google_Maps_pin.svg.png
+    icon: /icon/maps pin.png
     click: submap
     submap:
       image: /img/white_plaza_area.png
       width_base: 1
       height_base: 1
       items:
-      - name: MemChu
-        details: |-
-          # Backside of MemChu
-          Recorded around 6:10PM
-          After dark
-        icon: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Google_Maps_pin.svg/274px-Google_Maps_pin.svg.png
-        sound:
-          url: /sounds/MemChu/SPTL014.mp3
-          loop: true
-          autostart: true
-        volume: 2
-        x: 0.388
-        z: 0.236
-        size: 4
-        offset_y: -2
-      - name: The Axe and Palm
-        details: |-
-          # The Axe and Palm
-          Recorded around 6:45PM
-        icon: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Google_Maps_pin.svg/274px-Google_Maps_pin.svg.png
-        sound:
-          url: /sounds/TAP/SPTL016.mp3
-          loop: true
-          autostart: true
-        volume: 1
-        x: 0.384
-        z: 0.634
-        size: 4
-        offset_y: -2
-      - name: Claw
-        details: |-
-          # The Claw
-          Recorded around 4:20PM.
-          There was a Hanukkah celebration happening in the background while I was recording.
-          The fountain itself was also off.
-        icon: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Google_Maps_pin.svg/274px-Google_Maps_pin.svg.png
-        sound:
-          url: /sounds/Claw/SPTL007.mp3
-          loop: true
-          autostart: true
-        volume: 5
-        x: 0.662
-        z: 0.690
-        size: 4
-        offset_y: -2
+        - name: MemChu
+          details: |-
+            # Backside of MemChu
+            I recorded this around 6:10PM on Tuesday 11/30 – the sun had set,
+            so you can start to hear crickets and other night life.
+          icon: /icon/maps pin.png
+          sound:
+            url: /sounds/MemChu/SPTL014.mp3
+            loop: true
+            autostart: true
+          volume: 2
+          x: 0.388
+          z: 0.236
+          size: 4
+          offset_y: -2
+        - name: The Axe and Palm
+          details: |-
+            # The Axe and Palm
+            I recorded this around 6:45PM on Tuesday 11/30
+          icon: /icon/maps pin.png
+          sound:
+            url: /sounds/TAP/SPTL016.mp3
+            loop: true
+            autostart: true
+          volume: 1
+          x: 0.384
+          z: 0.634
+          size: 4
+          offset_y: -2
+        - name: Claw
+          details: |-
+            # The Claw
+
+            I recorded this around 4:20PM on Tuesday 11/30
+
+            There was a Hanukkah celebration happening in the background while I was recording.
+            The fountain itself was also off, which is relatively abnormal for this time on a Tuesday.
+          icon: /icon/maps pin.png
+          sound:
+            url: /sounds/Claw/SPTL007.mp3
+            loop: true
+            autostart: true
+          volume: 5
+          x: 0.662
+          z: 0.690
+          size: 4
+          offset_y: -2
     sound:
-     url: /sounds/MemChu/SPTL014.mp3
-     loop: true
-     autostart: true
+      url: /sounds/MemChu/SPTL014.mp3
+      loop: true
+      autostart: true
     volume: 2
     x: 0.453999
     z: 0.699

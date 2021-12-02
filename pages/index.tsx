@@ -34,6 +34,9 @@ import {
 } from "@mui/material";
 import { Box } from "@mui/system";
 import { Info } from "@mui/icons-material";
+import { createPopper } from "@popperjs/core/lib/createPopper";
+import { VirtualElement } from "@popperjs/core";
+import { usePopper } from "react-popper";
 
 const Home: NextPage = () => {
   const [back, setBack] = useState<Map[]>([]);
@@ -327,13 +330,33 @@ const ItemEl = ({
     item.z - height / 2 + ((item.offset_y ?? 0) / (item.size ?? 1)) * height;
 
   const [tooltipShown, setTooltip] = useState(false);
-
   const [mouseLoc, setMouseLoc] = useState({ x: 0, y: 0 });
+  const [popperEl, setPopperEl] = useState<HTMLElement | null>(null);
 
   const md = useMemo(
     () => <ReactMarkdown>{item.details ?? ""}</ReactMarkdown>,
     [item]
   );
+
+  const ve: VirtualElement = useMemo(
+    () => ({
+      getBoundingClientRect: () =>
+        ({
+          top: mouseLoc.y,
+          left: mouseLoc.x,
+          bottom: mouseLoc.y,
+          right: mouseLoc.x,
+          width: 0,
+          height: 0,
+        } as unknown as DOMRect),
+    }),
+    [mouseLoc]
+  );
+
+  const { styles, attributes } = usePopper(ve, popperEl, {
+    strategy: "fixed",
+    placement: "bottom-start",
+  });
 
   return (
     <Base
@@ -355,13 +378,15 @@ const ItemEl = ({
             elevation={4}
             sx={{
               position: "fixed",
-              top: mouseLoc.y + 20,
-              left: mouseLoc.x,
+              margin: 2,
               background: "white",
               padding: "10px",
               opacity: 0.7,
-              maxWidth: '30vw'
+              maxWidth: "30vw",
             }}
+            ref={setPopperEl}
+            style={styles.popper}
+            {...attributes.popper}
           >
             {md}
           </Card>

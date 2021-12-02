@@ -155,7 +155,7 @@ const Home: NextPage = () => {
       </Head>
       <AppBar position="sticky">
         <Toolbar>
-          <Typography variant="h4" sx={{ flexGrow: 1 }}>
+          <Typography variant="h4" component="h1" sx={{ flexGrow: 1 }}>
             Stanford Sonic Map
           </Typography>
           <Box sx={{ margin: 1 }}>

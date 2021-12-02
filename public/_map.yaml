@@ -34,7 +34,7 @@ items:
           icon: /icon/maps pin.png
           details: |-
             ## Inside Wilbur Dining Hall
-            
+
             Wilbur dining hall is known mostly for its brunches and phở – although
             since COVID-19 I haven’t seen phở as often.
 
@@ -53,7 +53,7 @@ items:
           icon: /icon/maps pin.png
           details: |-
             ## Outside Wilbur Dining
-            
+
             Right on the west side of Wilbur, there’s a nice outdoor seating area that
             lies in the space between Trancos, Soto, Rinc, and Otero. You get a bit of the
             sound of others dining – especially since COVID-19, more people eat outside –
@@ -109,8 +109,16 @@ items:
     offset_y: -2
   - name: Munger/Stern area
     details: |-
-      # Munger/Stern area
-      I recorded this around 2:40PM on Tuesday 11/30
+      ## Munger/Stern area
+
+      There’s a road just south of Stern that separates the Munger grad housing
+      and the Stern dorm complex. You get the occasional Uber or Lyft picking
+      up or dropping off students here, or golf carts and University vehicles
+      passing by on their way to who-knows-where, as well as the sound of
+      students of all kinds walking to get to the Row, to their dorms, and/or
+      towards Meyer Green, likely on their way to the library or central campus.
+
+      I recorded this around 2:40PM on Tuesday 11/30.
     icon: /icon/maps pin.png
     sound:
       url: /sounds/Munger Stern 230PM/SPTL003.mp3
@@ -123,7 +131,18 @@ items:
     offset_y: -2
   - name: Lake Lag
     details: |-
-      # Lake Lag
+      ## Lake Lag
+
+      Ah, dry Lake Lagunita! While you won’t be able to hear the sound of water
+      here, you will hear the sound of passersby, either taking a relaxing
+      stroll around this more rural-looking part of Stanford’s campus, or 
+      getting some exercise in. This was recorded on the side nearer to Lag
+      housing, which means you may hear the sounds of vehicles and people
+      moving food and other supplies in and out of the nearby dining hall.
+      It was also recorded near Elliott Program Center, which has rooms students
+      can reserve to use for whatever – if you listen closely, you might hear
+      some music coming from there.
+
       I recorded this around 3:20PM on Tuesday 11/30
     icon: /icon/maps pin.png
     sound:
@@ -137,7 +156,18 @@ items:
     offset_y: -2
   - name: AOREC
     details: |-
-      # AOREC Poolside
+      ## AOREC Poolside
+
+      AOREC is one of the gyms on campus (nearer to Florence Moore and GovCo).
+      Some people call it “Farillaga” (if they live on East campus) or
+      “Nearillaga” (if they live on West campus), to differentiate the two
+      gyms available to them (the other one being ACSR – the "A" in both these
+      acronyms stands for "Arillaga"). AOREC has an outdoor pool – you can hear
+      the sounds of splishing and splashing as a bunch of folks hit the water
+      to get their exercise and/or training in. You can also hear the sounds
+      of water splashing over the edge of the pool into the drains that recycle
+      the water.
+
       I recorded this around 3:40PM on Tuesday 11/30
     icon: /icon/maps pin.png
     sound:
@@ -151,7 +181,15 @@ items:
     offset_y: -2
   - name: Terman Fountain
     details: |-
-      # Terman Fountain
+      ## Terman Fountain
+
+      Terman fountain is a bit of a nostalgic place for me – I came upon it
+      randomly during Admit Weekend in the middle of all the hustle and bustle.
+      It was miraculously empty, and quiet (aside from the sounds of the fountain
+      itself, which washed away a lot of the other noises around campus). It was
+      a nice place to just sit and be before picking myself up and going to the
+      next thing!
+
       I recorded this around 4PM on Tuesday 11/30
     icon: /icon/maps pin.png
     sound:
@@ -165,16 +203,37 @@ items:
     offset_y: -2
   - name: Green Library
     details: |-
-      # Green Library
-      I recorded this around 4:40PM on Tuesday 11/30
-    icon: /icon/maps pin.png
+      ## Green Library
+
+      Green Library is I believe the largest and most well-known library on
+      Stanford’s campus. It houses the Humanities and Social Sciences collections,
+      and includes Special Collections & University Archives and the
+      David Rumsey Map Center.
+
+      Click here to hear a couple different soundscapes from in and around Green!
+    icon: /icon/maps pin green.png
+    sound:
+      url: /sounds/Green Library/Lane Reading Room/SPTL008.mp3
+      loop: true
+      autostart: true
+    volume: 5
+    x: 0.559
+    z: 0.648
+    size: 4
+    offset_y: -2
     click: submap
     submap:
       image: /img/meyer_green.png
       items:
         - name: Lane Reading Room
           details: |-
-            # Lane Reading Room
+            ## Lane Reading Room
+
+            Lane Reading Room is a large room in the Bing Wing of Green Library.
+            The room has a certain ~vibe~ to it that makes it a nice place to read,
+            I just wish the chairs weren’t so creaky! You can hear the movement
+            of students trying their best to focus and be quiet here.
+
             I recorded this around 4:40PM on Tuesday 11/30
           icon: /icon/maps pin.png
           sound:
@@ -188,7 +247,16 @@ items:
           offset_y: -2
         - name: Outside Bing Wing
           details: |-
-            # Just Outside the Bing Wing
+            ## Just Outside the Bing Wing
+
+            Just outside the Bing Wing of Green Library is a road that leads
+            directly to the heart of Main Quad, as well as a road that connects
+            north and south campus (a very well-travelled one – during peak
+            class hours, you can count hundreds of students using this road
+            to get from class to class). You can hear the excited sounds of
+            people socializing here or getting from place to place – a stark
+            contrast with the quietude and academic focus on Lane Reading Room.
+
             I recorded this around 5PM on Tuesday 11/30
           icon: /icon/maps pin.png
           sound:
@@ -200,18 +268,20 @@ items:
           z: 0.212999
           size: 4
           offset_y: -2
-    sound:
-      url: /sounds/Green Library/Lane Reading Room/SPTL008.mp3
-      loop: true
-      autostart: true
-    volume: 5
-    x: 0.559
-    z: 0.648
-    size: 4
-    offset_y: -2
   - name: The Oval
     details: |-
-      # The bottom of the oval
+      ## The bottom of the oval
+
+      The oval! The site of most of Stanford’s iconic landscape pictures.
+      It’s in many ways the start of the separation between main campus and 
+      “the outside world.” You can hear cars and busses passing by to pick up
+      and drop folks off, and on just the other side of this walkway hear the
+      sound of many students getting from place to place.
+
+      At one point, a couple entered a car right in front of the mic. At another
+      point, some students walked up to inspect what this weird electronic device
+      was doing hanging out near the oval.
+
       I recorded this around 5:20PM on Tuesday 11/30
     icon: /icon/maps pin.png
     sound:
@@ -226,6 +296,11 @@ items:
   - name: Clarke Center
     details: |-
       # Clarke Center
+
+      One of the med school buildings – a huge, sweeping research lab. It’s loud
+      here, you can hear machines whirring all round you, apparently working on
+      all sorts of important STEM research.
+
       I recorded this around 5:40PM on Tuesday 11/30
     icon: /icon/maps pin.png
     sound:
@@ -239,8 +314,15 @@ items:
     offset_y: -2
   - name: Central Campus
     details: |-
-      # TODO
-    icon: /icon/maps pin.png
+      ## "Central Campus"
+
+      It’s hard to know exactly what to call this area of campus. It’s sort of...
+      the metropolitain area, I suppose, of campus. Here you have Tresidder
+      (Starbucks and a bunch of places to eat), the undergraduate package center,
+      TAP (The Axe And Palm, a late-night eatery), the bookstore, and White Plaza.
+
+      Click here to hear a few soundscapes recorded in this area!
+    icon: /icon/maps pin green.png
     click: submap
     submap:
       image: /img/white_plaza_area.png
@@ -249,7 +331,16 @@ items:
       items:
         - name: MemChu
           details: |-
-            # Backside of MemChu
+            ## Backside of MemChu
+
+            Memorial Church (MemChu) is a beautiful piece of architecture that
+            overlooks Main Quad (and is also a centerpiece of many of Stanford’s
+            most iconic photos). On the backside (south side), there’s a road
+            that many students use to transit to their classes (especially getting
+            to the engineering quad or the Tresidder area). There is also
+            a gate that allows authorized cars to get into the normally-restricted
+            north side of campus.
+
             I recorded this around 6:10PM on Tuesday 11/30 – the sun had set,
             so you can start to hear crickets and other night life.
           icon: /icon/maps pin.png
@@ -264,7 +355,14 @@ items:
           offset_y: -2
         - name: The Axe and Palm
           details: |-
-            # The Axe and Palm
+            ## The Axe and Palm
+
+            The clasic late-night haunt! During “normal” school years, TAP
+            is open through about 2 AM, and I personally have spent *way* too
+            much time here over the years. You can hear the sounds of people
+            ordering and chatting as they eat, as well as TAP’s boppin’
+            soundtrack.
+
             I recorded this around 6:45PM on Tuesday 11/30
           icon: /icon/maps pin.png
           sound:
@@ -278,12 +376,16 @@ items:
           offset_y: -2
         - name: Claw
           details: |-
-            # The Claw
+            ## The Claw
+
+            The claw is Stanford’s most iconic fountain. It sits in the middle of
+            White Plaza, between the bookstore and Old Union (which houses TAP).
+            You often hear events happening in White Plaza, just south of the Claw.
+            In this case, there was a Hanukkah celebration happening in the
+            background while I was recording. The fountain itself was also off,
+            which is relatively abnormal for this time on a Tuesday.
 
             I recorded this around 4:20PM on Tuesday 11/30
-
-            There was a Hanukkah celebration happening in the background while I was recording.
-            The fountain itself was also off, which is relatively abnormal for this time on a Tuesday.
           icon: /icon/maps pin.png
           sound:
             url: /sounds/Claw/SPTL007.mp3

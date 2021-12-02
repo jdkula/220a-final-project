@@ -2,7 +2,7 @@ import fetchAndDecode from "./fetchAndDecode";
 import { Map, MapItem } from "./map";
 
 export default class MapContainer {
-  private _audioCtx: AudioContext;
+  readonly audioCtx: AudioContext;
   private _map: Map;
   private _sources: { [name: string]: AudioBufferSourceNode };
   private _panners: { [name: string]: PannerNode };
@@ -22,7 +22,7 @@ export default class MapContainer {
     onLoad?: () => void,
     paused = false
   ) {
-    this._audioCtx = new AudioContext();
+    this.audioCtx = new AudioContext();
     this._map = map;
     this._sources = {};
     this._panners = {};
@@ -67,7 +67,7 @@ export default class MapContainer {
 
   _setupItem(item: MapItem, buffer: AudioBuffer) {
     const set = new Set<AudioNode>();
-    const source = this._audioCtx.createBufferSource();
+    const source = this.audioCtx.createBufferSource();
     source.buffer = buffer;
     source.loop = item.sound.loop;
 
@@ -75,15 +75,15 @@ export default class MapContainer {
       source.start();
     }
 
-    const gain = this._audioCtx.createGain();
+    const gain = this.audioCtx.createGain();
     gain.gain.value = item.volume ?? 1;
 
-    const panner = this._audioCtx.createPanner();
+    const panner = this.audioCtx.createPanner();
     panner.panningModel = "HRTF";
     panner.positionY.value = item.elevation ?? 0;
     panner.refDistance = 0.05;
     panner.rolloffFactor = 6 * (1 / (item.range ?? 1));
-    panner.connect(this._audioCtx.destination);
+    panner.connect(this.audioCtx.destination);
 
     set.add(panner);
     source.connect(gain);
@@ -105,7 +105,7 @@ export default class MapContainer {
       this._items[item.name] = item;
       let prom;
       if (!this._buffers[item.sound.url]) {
-        prom = fetchAndDecode(this._audioCtx, item.sound.url).then((buffer) =>
+        prom = fetchAndDecode(this.audioCtx, item.sound.url).then((buffer) =>
           this._setupItem(item, buffer)
         );
       } else {
@@ -146,7 +146,7 @@ export default class MapContainer {
         source?.start();
       } catch (e) {
         source?.stop();
-        const newSource = this._audioCtx.createBufferSource();
+        const newSource = this.audioCtx.createBufferSource();
         newSource.buffer = source.buffer;
         newSource.loop = source.loop;
 
@@ -164,10 +164,10 @@ export default class MapContainer {
   }
 
   start() {
-    this._audioCtx.resume();
+    this.audioCtx.resume();
   }
 
   pause() {
-    this._audioCtx.suspend();
+    this.audioCtx.suspend();
   }
 }

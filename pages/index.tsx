@@ -62,7 +62,11 @@ const Home: NextPage = () => {
   }, []);
   const onResume = useCallback(() => {
     mapContainer.current?.start();
-    setPaused(false);
+    setPaused(mapContainer.current?.audioCtx.state !== "running");
+    setTimeout(
+      () => setPaused(mapContainer.current?.audioCtx.state !== "running"),
+      50
+    );
   }, []);
 
   const onStartLoad = useCallback(() => {

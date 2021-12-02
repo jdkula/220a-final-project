@@ -19,6 +19,7 @@ import Portal from "../lib/usePortal";
 const Home: NextPage = () => {
   const [back, setBack] = useState<Map[]>([]);
   const [details, setDetails] = useState<Map | null>(null);
+  const [loading, setLoading] = useState(true);
   const svgEl = useRef<SVGGraphicsElement | null>(null);
   const svgPt = useRef<SVGPoint | null>(null);
   const mapContainer = useRef<MapContainer | null>(null);
@@ -30,15 +31,24 @@ const Home: NextPage = () => {
       .then((obj) => setDetails(obj));
   }, []);
 
+  const onStartLoad = useCallback(() => {
+    setLoading(true);
+    mapContainer.current?.pause();
+  }, []);
+  const onLoad = useCallback(() => {
+    setLoading(false);
+    mapContainer.current?.start();
+  }, []);
+
   useEffect(() => {
     if (!details) return;
 
     if (!mapContainer.current) {
-      mapContainer.current = new MapContainer(details);
+      mapContainer.current = new MapContainer(details, onStartLoad, onLoad, true);
     } else {
       mapContainer.current.loadNewMap(details);
     }
-  }, [details]);
+  }, [details, onLoad, onStartLoad]);
 
   const getCursorPt = useCallback(
     (evt: React.MouseEvent): { x: number; y: number } | null => {
@@ -101,6 +111,7 @@ const Home: NextPage = () => {
       <div>
         <button onClick={() => mapContainer.current?.start()}>Start</button>
       </div>
+      <div>{loading && "Loading..."}</div>
       {/* <pre>{JSON.stringify(details, null, 2)}</pre> */}
       <div>{back.length > 0 && <button onClick={onBack}>Back</button>}</div>
       <div>
@@ -160,7 +171,10 @@ const ItemEl = ({
 
   const [mouseLoc, setMouseLoc] = useState({ x: 0, y: 0 });
 
-  const md = useMemo(() => <ReactMarkdown>{item.details}</ReactMarkdown>, [item])
+  const md = useMemo(
+    () => <ReactMarkdown>{item.details}</ReactMarkdown>,
+    [item]
+  );
 
   return (
     <Base
@@ -184,8 +198,8 @@ const ItemEl = ({
               top: mouseLoc.y + 20,
               left: mouseLoc.x,
               background: "white",
-              padding: '10px',
-              opacity: 0.7
+              padding: "10px",
+              opacity: 0.7,
             }}
           >
             {md}

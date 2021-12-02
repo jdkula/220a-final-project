@@ -25,7 +25,7 @@ items:
           trigger: null
           x: 0.609
           z: 0.5419
-          size: 1
+          size: 4
           elevation: 0
           range: 1
           volume: 0.7
@@ -43,7 +43,7 @@ items:
           trigger: null
           x: 0.2969
           z: 0.467
-          size: 1
+          size: 4
           elevation: 0
           range: 1
           volume: 0.7
@@ -176,23 +176,183 @@ items:
     offset_y: -2
     elevation: 0
     range: 1
-  - name: Claw
+  - name: Green Library
     details: |-
-      # The Claw
-      Recorded around 4:20PM.
-      There was a Hanukkah celebration happening in the background while I was recording.
-      The fountain itself was also off.
+      # Green Library
+      Recorded around 4:40PM
+    icon: https://upload.wikimedia.org/wikipedia/commons/d/d1/Google_Maps_pin.svg
+    click: submap
+    trigger: null
+    submap:
+      image: /img/meyer_green.png
+      width_base: 1
+      height_base: 1
+      items:
+      - name: Lane Reading Room
+        details: |-
+          # Lane Reading Room
+          Recorded around 4:40PM
+        icon: https://upload.wikimedia.org/wikipedia/commons/d/d1/Google_Maps_pin.svg
+        click: null
+        trigger: null
+        submap: null
+        sound:
+          url: /sounds/Green Library/Lane Reading Room/SPTL008.mp3
+          loop: true
+          autostart: true
+        volume: 5
+        x: 0.612999
+        z: 0.224
+        size: 4
+        offset_y: -2
+        elevation: 0
+        range: 1
+      - name: Outside Bing Wing
+        details: |-
+          # Just Outside the Bing Wing
+          Recorded around 5:00PM
+        icon: https://upload.wikimedia.org/wikipedia/commons/d/d1/Google_Maps_pin.svg
+        click: null
+        trigger: null
+        submap: null
+        sound:
+          url: /sounds/Green Library/Outside Bing Wing 4PM/SPTL010.mp3
+          loop: true
+          autostart: true
+        volume: 5
+        x: 0.367
+        z: 0.212999
+        size: 4
+        offset_y: -2
+        elevation: 0
+        range: 1
+    sound:
+     url: /sounds/Green Library/Lane Reading Room/SPTL008.mp3
+     loop: true
+     autostart: true
+    volume: 5
+    x: 0.559
+    z: 0.648
+    size: 4
+    offset_y: -2
+    elevation: 0
+    range: 1
+  - name: The Oval
+    details: |-
+      # The bottom of the oval
+      Recorded around 5:20PM
     icon: https://upload.wikimedia.org/wikipedia/commons/d/d1/Google_Maps_pin.svg
     click: null
     trigger: null
     submap: null
     sound:
-     url: /sounds/Claw/SPTL007.mp3
+     url: /sounds/Oval/SPTL011.mp3
      loop: true
      autostart: true
-    volume: 5
-    x: 0.4709999
-    z: 0.7189999
+    volume: 2
+    x: 0.476999
+    z: 0.575999
+    size: 4
+    offset_y: -2
+    elevation: 0
+    range: 1
+  - name: Clarke Center
+    details: |-
+      # Clarke Center
+      Recorded around 5:40PM
+    icon: https://upload.wikimedia.org/wikipedia/commons/d/d1/Google_Maps_pin.svg
+    click: null
+    trigger: null
+    submap: null
+    sound:
+     url: /sounds/Clarke Center/SPTL013.mp3
+     loop: true
+     autostart: true
+    volume: 2
+    x: 0.342999
+    z: 0.495999
+    size: 4
+    offset_y: -2
+    elevation: 0
+    range: 1
+  - name: Central Campus
+    details: |-
+      # TODO
+    icon: https://upload.wikimedia.org/wikipedia/commons/d/d1/Google_Maps_pin.svg
+    click: submap
+    trigger: null
+    submap:
+      image: /img/white_plaza_area.png
+      width_base: 1
+      height_base: 1
+      items:
+      - name: MemChu
+        details: |-
+          # Backside of MemChu
+          Recorded around 6:10PM
+          After dark
+        icon: https://upload.wikimedia.org/wikipedia/commons/d/d1/Google_Maps_pin.svg
+        click: null
+        trigger: null
+        submap: null
+        sound:
+          url: /sounds/MemChu/SPTL014.mp3
+          loop: true
+          autostart: true
+        volume: 2
+        x: 0.388
+        z: 0.236
+        size: 4
+        offset_y: -2
+        elevation: 0
+        range: 1
+      - name: The Axe and Palm
+        details: |-
+          # The Axe and Palm
+          Recorded around 6:45PM
+        icon: https://upload.wikimedia.org/wikipedia/commons/d/d1/Google_Maps_pin.svg
+        click: null
+        trigger: null
+        submap: null
+        sound:
+          url: /sounds/TAP/SPTL016.mp3
+          loop: true
+          autostart: true
+        volume: 1
+        x: 0.384
+        z: 0.634
+        size: 4
+        offset_y: -2
+        elevation: 0
+        range: 1
+      - name: Claw
+        details: |-
+          # The Claw
+          Recorded around 4:20PM.
+          There was a Hanukkah celebration happening in the background while I was recording.
+          The fountain itself was also off.
+        icon: https://upload.wikimedia.org/wikipedia/commons/d/d1/Google_Maps_pin.svg
+        click: null
+        trigger: null
+        submap: null
+        sound:
+          url: /sounds/Claw/SPTL007.mp3
+          loop: true
+          autostart: true
+        volume: 5
+        x: 0.662
+        z: 0.690
+        size: 4
+        offset_y: -2
+        elevation: 0
+        range: 1
+    sound:
+     url: /sounds/MemChu/SPTL014.mp3
+     loop: true
+     autostart: true
+    volume: 2
+    x: 0.453999
+    z: 0.699
     size: 4
     offset_y: -2
     elevation: 0

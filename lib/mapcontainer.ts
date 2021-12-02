@@ -16,7 +16,12 @@ export default class MapContainer {
   public onStartLoad: (() => void) | null = null;
   public onLoad: (() => void) | null = null;
 
-  constructor(map: Map, onStartLoad?: () => void, onLoad?: () => void) {
+  constructor(
+    map: Map,
+    onStartLoad?: () => void,
+    onLoad?: () => void,
+    paused = false
+  ) {
     this._audioCtx = new AudioContext();
     this._map = map;
     this._sources = {};
@@ -27,6 +32,10 @@ export default class MapContainer {
 
     this.onStartLoad = onStartLoad ?? null;
     this.onLoad = onLoad ?? null;
+
+    if (paused) {
+      this.pause();
+    }
 
     this.loadNewMap(map);
   }
@@ -73,7 +82,7 @@ export default class MapContainer {
     panner.panningModel = "HRTF";
     panner.positionY.value = item.elevation ?? 0;
     panner.refDistance = 0.05;
-    panner.rolloffFactor = 6;
+    panner.rolloffFactor = (6 * 1) / item.range;
     panner.connect(this._audioCtx.destination);
 
     set.add(panner);
@@ -157,5 +166,9 @@ export default class MapContainer {
 
   start() {
     this._audioCtx.resume();
+  }
+
+  pause() {
+    this._audioCtx.suspend();
   }
 }

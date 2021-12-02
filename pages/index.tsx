@@ -158,7 +158,7 @@ const Home: NextPage = () => {
   return (
     <div>
       <Head>
-        <title>Final Project</title>
+        <title>Music 220A Final Project: Stanford Sonic Map</title>
       </Head>
       <AppBar position="sticky">
         <Toolbar>

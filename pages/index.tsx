@@ -15,7 +15,17 @@ import YAML from "yaml";
 import MapContainer from "../lib/mapcontainer";
 import ReactMarkdown from "react-markdown";
 import Portal from "../lib/usePortal";
-import { AppBar, Button, Toolbar, Typography } from "@mui/material";
+import {
+  AppBar,
+  Button,
+  Card,
+  Collapse,
+  Container,
+  LinearProgress,
+  Toolbar,
+  Typography,
+} from "@mui/material";
+import { Box } from "@mui/system";
 
 const Home: NextPage = () => {
   const [back, setBack] = useState<Map[]>([]);
@@ -114,53 +124,67 @@ const Home: NextPage = () => {
       <Head>
         <title>Final Project</title>
       </Head>
-      <AppBar>
+      <AppBar position="sticky">
         <Toolbar>
-          <Typography variant="h4" sx={{flexGrow: 1}}>Stanford Sonic Map</Typography>
+          <Typography variant="h4" sx={{ flexGrow: 1 }}>
+            Stanford Sonic Map
+          </Typography>
+          <Box sx={{ margin: 1 }}>
+            {back.length > 0 && <Button onClick={onBack} color="secondary">Back</Button>}
+          </Box>
+          <Button
+            onClick={() => mapContainer.current?.start()}
+            variant="contained"
+            disabled={loading}
+            color="secondary"
+          >
+            Start
+          </Button>
         </Toolbar>
       </AppBar>
-      <div>
-        <Button
-          onClick={() => mapContainer.current?.start()}
-          variant="contained"
-        >
-          Start
-        </Button>
-      </div>
-      <div>{loading && "Loading..."}</div>
-      {/* <pre>{JSON.stringify(details, null, 2)}</pre> */}
-      <div>{back.length > 0 && <button onClick={onBack}>Back</button>}</div>
-      <div>
-        {details && (
-          <svg
-            style={{ position: "relative", userSelect: "none" }}
-            width={1000}
-            height={1000}
-            viewBox={`0 0 ${details.width_base} ${details.height_base}`}
-            ref={(el) => {
-              svgPt.current = el?.createSVGPoint() ?? null;
-              svgEl.current = el;
-            }}
-            onMouseMove={onMouseMove}
-            onDoubleClick={onDebugClick}
-          >
-            <image
-              href={details.image}
-              width={details.width_base}
-              height={details.height_base}
-              opacity={0.8}
-            />
-            {details.items.map((item) => (
-              <ItemEl
-                key={item.name}
-                item={item}
-                map={details}
-                onClick={() => onClick(item)}
+      <Collapse in={loading} sx={{ marginBottom: 1 }}>
+        <LinearProgress sx={{ width: "100%" }} />
+      </Collapse>
+      <Container
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Card variant="elevation" elevation={10}>
+          {details && (
+            <svg
+              style={{ position: "relative", userSelect: "none" }}
+              width={1000}
+              height={1000}
+              viewBox={`0 0 ${details.width_base} ${details.height_base}`}
+              ref={(el) => {
+                svgPt.current = el?.createSVGPoint() ?? null;
+                svgEl.current = el;
+              }}
+              onMouseMove={onMouseMove}
+              onDoubleClick={onDebugClick}
+            >
+              <image
+                href={details.image}
+                width={details.width_base}
+                height={details.height_base}
+                opacity={0.8}
               />
-            ))}
-          </svg>
-        )}
-      </div>
+              {details.items.map((item) => (
+                <ItemEl
+                  key={item.name}
+                  item={item}
+                  map={details}
+                  onClick={() => onClick(item)}
+                />
+              ))}
+            </svg>
+          )}
+        </Card>
+      </Container>
     </div>
   );
 };

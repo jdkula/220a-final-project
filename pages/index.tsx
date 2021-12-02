@@ -41,6 +41,7 @@ const Home: NextPage = () => {
   const [loading, setLoading] = useState(true);
   const [hidden, setHidden] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
+  const [isPaused, setPaused] = useState(true);
   const svgEl = useRef<SVGGraphicsElement | null>(null);
   const svgPt = useRef<SVGPoint | null>(null);
   const mapContainer = useRef<MapContainer | null>(null);
@@ -52,14 +53,23 @@ const Home: NextPage = () => {
       .then((obj) => setDetails(obj));
   }, []);
 
+  const onPause = useCallback(() => {
+    mapContainer.current?.pause();
+    setPaused(true);
+  }, []);
+  const onResume = useCallback(() => {
+    mapContainer.current?.start();
+    setPaused(false);
+  }, []);
+
   const onStartLoad = useCallback(() => {
     setLoading(true);
-    mapContainer.current?.pause();
-  }, []);
+    onPause();
+  }, [onPause]);
   const onLoad = useCallback(() => {
     setLoading(false);
-    mapContainer.current?.start();
-  }, []);
+    onResume();
+  }, [onResume]);
 
   useEffect(() => {
     if (!details) return;
@@ -156,12 +166,12 @@ const Home: NextPage = () => {
             )}
           </Box>
           <Button
-            onClick={() => mapContainer.current?.start()}
+            onClick={isPaused ? onResume : onPause}
             variant="contained"
             disabled={loading}
             color="secondary"
           >
-            Start
+            {loading ? "Loading..." : isPaused ? "Play" : "Pause"}
           </Button>
           <IconButton
             sx={{ marginLeft: 2, color: "white" }}
@@ -193,7 +203,11 @@ const Home: NextPage = () => {
           </Typography>
           <Typography paragraph>
             This application is fully modular; you can create your own maps for
-            it. The <Link href="/_map.yaml" target="_blank">current map</Link> is displayed below:
+            it. The{" "}
+            <Link href="/_map.yaml" target="_blank">
+              current map
+            </Link>{" "}
+            is displayed below:
           </Typography>
           <Card
             elevation={2}

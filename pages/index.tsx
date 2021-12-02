@@ -182,7 +182,9 @@ const Home: NextPage = () => {
             variant="contained"
             disabled={loading}
             color="secondary"
-            startIcon={loading ? undefined : isPaused ? <PlayArrow /> : <Pause />}
+            startIcon={
+              loading ? undefined : isPaused ? <PlayArrow /> : <Pause />
+            }
           >
             {loading ? "Loading..." : isPaused ? "Play" : "Pause"}
           </Button>
@@ -203,7 +205,13 @@ const Home: NextPage = () => {
         >
           <Typography paragraph>
             <strong>Stanford Sonic Map</strong>, created by Jonathan Kula for
-            CCRMA’s Music 220A class.
+            CCRMA’s Music 220A class. You can view the code{" "}
+            <Link
+              href="https://github.com/jdkula/220a-final-project"
+              target="_blank"
+            >
+              here.
+            </Link>
           </Typography>
           <Typography paragraph>
             Sounds were recorded on a Zoom H2n microphone around campus.

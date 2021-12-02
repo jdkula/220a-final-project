@@ -350,9 +350,10 @@ const ItemEl = ({
       {...extra}
     >
       <Portal>
-        {tooltipShown && (
-          <div
-            style={{
+        <Fade in={tooltipShown}>
+          <Card
+            elevation={4}
+            sx={{
               position: "fixed",
               top: mouseLoc.y + 20,
               left: mouseLoc.x,
@@ -362,8 +363,8 @@ const ItemEl = ({
             }}
           >
             {md}
-          </div>
-        )}
+          </Card>
+        </Fade>
       </Portal>
     </Base>
   );

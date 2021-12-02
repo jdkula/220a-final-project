@@ -15,6 +15,7 @@ import YAML from "yaml";
 import MapContainer from "../lib/mapcontainer";
 import ReactMarkdown from "react-markdown";
 import Portal from "../lib/usePortal";
+import { AppBar, Button, Toolbar, Typography } from "@mui/material";
 
 const Home: NextPage = () => {
   const [back, setBack] = useState<Map[]>([]);
@@ -44,7 +45,12 @@ const Home: NextPage = () => {
     if (!details) return;
 
     if (!mapContainer.current) {
-      mapContainer.current = new MapContainer(details, onStartLoad, onLoad, true);
+      mapContainer.current = new MapContainer(
+        details,
+        onStartLoad,
+        onLoad,
+        true
+      );
     } else {
       mapContainer.current.loadNewMap(details);
     }
@@ -108,8 +114,18 @@ const Home: NextPage = () => {
       <Head>
         <title>Final Project</title>
       </Head>
+      <AppBar>
+        <Toolbar>
+          <Typography variant="h4" sx={{flexGrow: 1}}>Stanford Sonic Map</Typography>
+        </Toolbar>
+      </AppBar>
       <div>
-        <button onClick={() => mapContainer.current?.start()}>Start</button>
+        <Button
+          onClick={() => mapContainer.current?.start()}
+          variant="contained"
+        >
+          Start
+        </Button>
       </div>
       <div>{loading && "Loading..."}</div>
       {/* <pre>{JSON.stringify(details, null, 2)}</pre> */}

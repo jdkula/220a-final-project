@@ -130,7 +130,11 @@ const Home: NextPage = () => {
             Stanford Sonic Map
           </Typography>
           <Box sx={{ margin: 1 }}>
-            {back.length > 0 && <Button onClick={onBack} color="secondary">Back</Button>}
+            {back.length > 0 && (
+              <Button onClick={onBack} color="secondary">
+                Back
+              </Button>
+            )}
           </Box>
           <Button
             onClick={() => mapContainer.current?.start()}
@@ -155,33 +159,46 @@ const Home: NextPage = () => {
       >
         <Card variant="elevation" elevation={10}>
           {details && (
-            <svg
-              style={{ position: "relative", userSelect: "none" }}
-              width={1000}
-              height={1000}
-              viewBox={`0 0 ${details.width_base} ${details.height_base}`}
-              ref={(el) => {
-                svgPt.current = el?.createSVGPoint() ?? null;
-                svgEl.current = el;
-              }}
-              onMouseMove={onMouseMove}
-              onDoubleClick={onDebugClick}
-            >
-              <image
-                href={details.image}
-                width={details.width_base}
-                height={details.height_base}
-                opacity={0.8}
-              />
-              {details.items.map((item) => (
-                <ItemEl
-                  key={item.name}
-                  item={item}
-                  map={details}
-                  onClick={() => onClick(item)}
+            <div style={{
+              width: 1000 - ((details.crop_left ?? 0) + (details.crop_right ?? 0)) * 1000,
+              height: 1000 - ((details.crop_top ?? 0) + (details.crop_bottom ?? 0)) * 1000,
+              overflow: 'none'
+            }}>
+              <svg
+                style={{
+                  position: "relative",
+                  userSelect: "none",
+                  width: 1000,
+                  height: 1000,
+                  top: (details.crop_top ?? 0) * -1000,
+                  left: (details.crop_left ?? 0) * -1000,
+                  right: (details.crop_right ?? 0) * -1000,
+                  bottom: (details.crop_bottom ?? 0) * -1000,
+                }}
+                viewBox={`0 0 ${details.width_base} ${details.height_base}`}
+                ref={(el) => {
+                  svgPt.current = el?.createSVGPoint() ?? null;
+                  svgEl.current = el;
+                }}
+                onMouseMove={onMouseMove}
+                onDoubleClick={onDebugClick}
+              >
+                <image
+                  href={details.image}
+                  width={details.width_base}
+                  height={details.height_base}
+                  opacity={0.8}
                 />
-              ))}
-            </svg>
+                {details.items.map((item) => (
+                  <ItemEl
+                    key={item.name}
+                    item={item}
+                    map={details}
+                    onClick={() => onClick(item)}
+                  />
+                ))}
+              </svg>
+            </div>
           )}
         </Card>
       </Container>

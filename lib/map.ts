@@ -7,6 +7,10 @@ export interface Map {
   width_base: number;
   height_base: number;
   items: MapItem[];
+  crop_top?: number;
+  crop_bottom?: number;
+  crop_left?: number;
+  crop_right?: number;
 }
 
 export interface MapItem {

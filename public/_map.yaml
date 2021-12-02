@@ -1,6 +1,10 @@
 image: /img/stanford.png
 width_base: 1
 height_base: 1
+crop_top: 0.40
+crop_bottom: 0.10
+crop_left: 0.15
+crop_right: 0.15
 
 items:
   - name: Wilbur

@@ -1,11 +1,22 @@
 import { createTheme, responsiveFontSizes } from "@mui/material/styles";
-import { deepPurple, amber } from "@mui/material/colors";
+import { deepPurple, amber, green, red } from "@mui/material/colors";
 
-// Create a theme instance.
+const paloAlto = {
+  main: "#175E54",
+  light: "#2D716F",
+  dark: "#014240",
+};
+
+const cardinalRed = {
+  main: "#8C1515",
+  light: "#B83A4B",
+  dark: "#820000",
+};
+
 let theme = createTheme({
   palette: {
-    primary: deepPurple,
-    secondary: amber,
+    primary: cardinalRed,
+    secondary: paloAlto,
   },
 });
 

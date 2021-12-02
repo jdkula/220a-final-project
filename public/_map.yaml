@@ -196,7 +196,7 @@ items:
       url: /sounds/Terman Fountain/SPTL006.mp3
       loop: true
       autostart: true
-    volume: 5
+    volume: 3
     x: 0.365
     z: 0.681999
     size: 4
@@ -307,7 +307,7 @@ items:
       url: /sounds/Clarke Center/SPTL013.mp3
       loop: true
       autostart: true
-    volume: 2
+    volume: 1
     x: 0.342999
     z: 0.495999
     size: 4

@@ -33,7 +33,7 @@ import {
   Typography,
 } from "@mui/material";
 import { Box } from "@mui/system";
-import { Info } from "@mui/icons-material";
+import { ChevronLeft, Info, Pause, PlayArrow } from "@mui/icons-material";
 import { createPopper } from "@popperjs/core/lib/createPopper";
 import { VirtualElement } from "@popperjs/core";
 import { usePopper } from "react-popper";
@@ -167,7 +167,12 @@ const Home: NextPage = () => {
           </Typography>
           <Box sx={{ margin: 1 }}>
             {back.length > 0 && (
-              <Button onClick={onBack} color="secondary">
+              <Button
+                onClick={onBack}
+                color="inherit"
+                sx={{ color: "white" }}
+                startIcon={<ChevronLeft />}
+              >
                 Back
               </Button>
             )}
@@ -177,6 +182,7 @@ const Home: NextPage = () => {
             variant="contained"
             disabled={loading}
             color="secondary"
+            startIcon={loading ? undefined : isPaused ? <PlayArrow /> : <Pause />}
           >
             {loading ? "Loading..." : isPaused ? "Play" : "Pause"}
           </Button>

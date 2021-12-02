@@ -4,35 +4,35 @@ type Name = string;
 
 export interface Map {
   image: URL;
-  width_base: number;
-  height_base: number;
-  items: MapItem[];
+  items?: MapItem[];
   crop_top?: number;
   crop_bottom?: number;
   crop_left?: number;
   crop_right?: number;
+  scale?: number;
+  distance_multiplier?: number;
 }
 
 export interface MapItem {
   name: Name;
-  details: Markdown;
-  icon: null | URL;
+  details?: Markdown;
+  icon?: null | URL;
 
-  click: null | "trigger" | "submap";
-  submap: null | Map;
-  trigger: null | Name;
+  click?: null | "trigger" | "submap";
+  submap?: null | Map;
+  trigger?: null | Name;
 
   sound: {
     url: URL;
     loop: boolean;
     autostart: boolean;
   };
-  volume: number;
+  volume?: number;
   x: number;
   z: number;
-  elevation: null | number;
-  range: number;
-    size: number;
-    offset_x?: number;
-    offset_y?: number;
+  elevation?: null | number;
+  range?: number;
+  size?: number;
+  offset_x?: number;
+  offset_y?: number;
 }

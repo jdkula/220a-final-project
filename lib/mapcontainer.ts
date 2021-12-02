@@ -41,7 +41,7 @@ export default class MapContainer {
   }
 
   _unloadMap() {
-    for (const item of this._map.items) {
+    for (const item of this._map.items ?? []) {
       const source = this._sources[item.name];
       const panner = this._panners[item.name];
       const gain = this._gains[item.name];
@@ -76,13 +76,13 @@ export default class MapContainer {
     }
 
     const gain = this._audioCtx.createGain();
-    gain.gain.value = item.volume;
+    gain.gain.value = item.volume ?? 1;
 
     const panner = this._audioCtx.createPanner();
     panner.panningModel = "HRTF";
     panner.positionY.value = item.elevation ?? 0;
     panner.refDistance = 0.05;
-    panner.rolloffFactor = (6 * 1) / item.range;
+    panner.rolloffFactor = 6 * (1 / (item.range ?? 1));
     panner.connect(this._audioCtx.destination);
 
     set.add(panner);
@@ -101,7 +101,7 @@ export default class MapContainer {
     this._map = map;
 
     const promises = [];
-    for (const item of map.items) {
+    for (const item of map.items ?? []) {
       this._items[item.name] = item;
       let prom;
       if (!this._buffers[item.sound.url]) {
@@ -126,14 +126,13 @@ export default class MapContainer {
     this._myX = x;
     this._myZ = z;
 
-    for (const item of this._map.items) {
+    const distance_multiplier = (this._map.scale ?? 1) * (this._map.distance_multiplier ?? 1);
+
+    for (const item of this._map.items ?? []) {
       const panner = this._panners[item.name];
       if (panner && panner.positionX && panner.positionZ) {
-        const width = (this._map.width_base / 50) * item.size;
-        const height = (this._map.height_base / 50) * item.size;
-
-        panner.positionX.value = item.x - this._myX;
-        panner.positionZ.value = item.z - this._myZ;
+        panner.positionX.value = (item.x - this._myX) * distance_multiplier;
+        panner.positionZ.value = (item.z - this._myZ) * distance_multiplier;
       }
     }
   }

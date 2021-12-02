@@ -1,23 +1,19 @@
 image: /img/stanford.png
-width_base: 1
-height_base: 1
 crop_top: 0.40
 crop_bottom: 0.10
 crop_left: 0.15
 crop_right: 0.15
+scale: 2
 
 items:
   - name: Wilbur
     details: |-
       # Wilbur
       Wilbur complex
-    icon: https://upload.wikimedia.org/wikipedia/commons/d/d1/Google_Maps_pin.svg
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Google_Maps_pin.svg/274px-Google_Maps_pin.svg.png
     click: submap
-    trigger: null
     submap:
       image: /img/wilbur.png
-      width_base: 1
-      height_base: 1
       items:
         - name: Inside
           icon: https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/160px-Infobox_info_icon.svg.png
@@ -64,16 +60,11 @@ items:
     z: 0.75499
     size: 4
     offset_y: -2
-    elevation: 0
-    range: 1
   - name: EVGR B Courtyard
     details: |-
       # EVGR B Courtyard
       Recorded around 2PM
-    icon: https://upload.wikimedia.org/wikipedia/commons/d/d1/Google_Maps_pin.svg
-    click: null
-    trigger: null
-    submap: null
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Google_Maps_pin.svg/274px-Google_Maps_pin.svg.png
     sound:
      url: /sounds/EVGR/B Courtyard 2PM/ZOOM0003.mp3
      loop: true
@@ -83,16 +74,11 @@ items:
     z: 0.702
     size: 4
     offset_y: -2
-    elevation: 0
-    range: 1
   - name: EVGR Roundabout
     details: |-
       # EVGR Roundabout
       Recorded around 2:20PM
-    icon: https://upload.wikimedia.org/wikipedia/commons/d/d1/Google_Maps_pin.svg
-    click: null
-    trigger: null
-    submap: null
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Google_Maps_pin.svg/274px-Google_Maps_pin.svg.png
     sound:
      url: /sounds/EVGR/Roundabout/ZOOM0005.mp3
      loop: true
@@ -102,16 +88,11 @@ items:
     z: 0.75099
     size: 4
     offset_y: -2
-    elevation: 0
-    range: 1
   - name: Munger/Stern area
     details: |-
       # Munger/Stern area
       Recorded around 2:40PM
-    icon: https://upload.wikimedia.org/wikipedia/commons/d/d1/Google_Maps_pin.svg
-    click: null
-    trigger: null
-    submap: null
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Google_Maps_pin.svg/274px-Google_Maps_pin.svg.png
     sound:
      url: /sounds/Munger Stern 230PM/SPTL003.mp3
      loop: true
@@ -121,16 +102,11 @@ items:
     z: 0.759
     size: 4
     offset_y: -2
-    elevation: 0
-    range: 1
   - name: Lake Lag
     details: |-
       # Lake Lag
       Recorded around 3:20PM
-    icon: https://upload.wikimedia.org/wikipedia/commons/d/d1/Google_Maps_pin.svg
-    click: null
-    trigger: null
-    submap: null
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Google_Maps_pin.svg/274px-Google_Maps_pin.svg.png
     sound:
      url: /sounds/Lake Lag/SPTL004.mp3
      loop: true
@@ -140,16 +116,11 @@ items:
     z: 0.735
     size: 4
     offset_y: -2
-    elevation: 0
-    range: 1
   - name: AOREC
     details: |-
       # AOREC Poolside
       Recorded around 3:40PM
-    icon: https://upload.wikimedia.org/wikipedia/commons/d/d1/Google_Maps_pin.svg
-    click: null
-    trigger: null
-    submap: null
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Google_Maps_pin.svg/274px-Google_Maps_pin.svg.png
     sound:
      url: /sounds/AOREC/SPTL005.mp3
      loop: true
@@ -159,16 +130,11 @@ items:
     z: 0.66299
     size: 4
     offset_y: -2
-    elevation: 0
-    range: 1
   - name: Terman Fountain
     details: |-
       # Terman Fountain
       Recorded around 4PM
-    icon: https://upload.wikimedia.org/wikipedia/commons/d/d1/Google_Maps_pin.svg
-    click: null
-    trigger: null
-    submap: null
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Google_Maps_pin.svg/274px-Google_Maps_pin.svg.png
     sound:
      url: /sounds/Terman Fountain/SPTL006.mp3
      loop: true
@@ -178,28 +144,20 @@ items:
     z: 0.681999
     size: 4
     offset_y: -2
-    elevation: 0
-    range: 1
   - name: Green Library
     details: |-
       # Green Library
       Recorded around 4:40PM
-    icon: https://upload.wikimedia.org/wikipedia/commons/d/d1/Google_Maps_pin.svg
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Google_Maps_pin.svg/274px-Google_Maps_pin.svg.png
     click: submap
-    trigger: null
     submap:
       image: /img/meyer_green.png
-      width_base: 1
-      height_base: 1
       items:
       - name: Lane Reading Room
         details: |-
           # Lane Reading Room
           Recorded around 4:40PM
-        icon: https://upload.wikimedia.org/wikipedia/commons/d/d1/Google_Maps_pin.svg
-        click: null
-        trigger: null
-        submap: null
+        icon: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Google_Maps_pin.svg/274px-Google_Maps_pin.svg.png
         sound:
           url: /sounds/Green Library/Lane Reading Room/SPTL008.mp3
           loop: true
@@ -209,16 +167,11 @@ items:
         z: 0.224
         size: 4
         offset_y: -2
-        elevation: 0
-        range: 1
       - name: Outside Bing Wing
         details: |-
           # Just Outside the Bing Wing
           Recorded around 5:00PM
-        icon: https://upload.wikimedia.org/wikipedia/commons/d/d1/Google_Maps_pin.svg
-        click: null
-        trigger: null
-        submap: null
+        icon: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Google_Maps_pin.svg/274px-Google_Maps_pin.svg.png
         sound:
           url: /sounds/Green Library/Outside Bing Wing 4PM/SPTL010.mp3
           loop: true
@@ -228,8 +181,6 @@ items:
         z: 0.212999
         size: 4
         offset_y: -2
-        elevation: 0
-        range: 1
     sound:
      url: /sounds/Green Library/Lane Reading Room/SPTL008.mp3
      loop: true
@@ -239,16 +190,11 @@ items:
     z: 0.648
     size: 4
     offset_y: -2
-    elevation: 0
-    range: 1
   - name: The Oval
     details: |-
       # The bottom of the oval
       Recorded around 5:20PM
-    icon: https://upload.wikimedia.org/wikipedia/commons/d/d1/Google_Maps_pin.svg
-    click: null
-    trigger: null
-    submap: null
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Google_Maps_pin.svg/274px-Google_Maps_pin.svg.png
     sound:
      url: /sounds/Oval/SPTL011.mp3
      loop: true
@@ -258,16 +204,11 @@ items:
     z: 0.575999
     size: 4
     offset_y: -2
-    elevation: 0
-    range: 1
   - name: Clarke Center
     details: |-
       # Clarke Center
       Recorded around 5:40PM
-    icon: https://upload.wikimedia.org/wikipedia/commons/d/d1/Google_Maps_pin.svg
-    click: null
-    trigger: null
-    submap: null
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Google_Maps_pin.svg/274px-Google_Maps_pin.svg.png
     sound:
      url: /sounds/Clarke Center/SPTL013.mp3
      loop: true
@@ -277,14 +218,11 @@ items:
     z: 0.495999
     size: 4
     offset_y: -2
-    elevation: 0
-    range: 1
   - name: Central Campus
     details: |-
       # TODO
-    icon: https://upload.wikimedia.org/wikipedia/commons/d/d1/Google_Maps_pin.svg
+    icon: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Google_Maps_pin.svg/274px-Google_Maps_pin.svg.png
     click: submap
-    trigger: null
     submap:
       image: /img/white_plaza_area.png
       width_base: 1
@@ -295,10 +233,7 @@ items:
           # Backside of MemChu
           Recorded around 6:10PM
           After dark
-        icon: https://upload.wikimedia.org/wikipedia/commons/d/d1/Google_Maps_pin.svg
-        click: null
-        trigger: null
-        submap: null
+        icon: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Google_Maps_pin.svg/274px-Google_Maps_pin.svg.png
         sound:
           url: /sounds/MemChu/SPTL014.mp3
           loop: true
@@ -308,16 +243,11 @@ items:
         z: 0.236
         size: 4
         offset_y: -2
-        elevation: 0
-        range: 1
       - name: The Axe and Palm
         details: |-
           # The Axe and Palm
           Recorded around 6:45PM
-        icon: https://upload.wikimedia.org/wikipedia/commons/d/d1/Google_Maps_pin.svg
-        click: null
-        trigger: null
-        submap: null
+        icon: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Google_Maps_pin.svg/274px-Google_Maps_pin.svg.png
         sound:
           url: /sounds/TAP/SPTL016.mp3
           loop: true
@@ -327,18 +257,13 @@ items:
         z: 0.634
         size: 4
         offset_y: -2
-        elevation: 0
-        range: 1
       - name: Claw
         details: |-
           # The Claw
           Recorded around 4:20PM.
           There was a Hanukkah celebration happening in the background while I was recording.
           The fountain itself was also off.
-        icon: https://upload.wikimedia.org/wikipedia/commons/d/d1/Google_Maps_pin.svg
-        click: null
-        trigger: null
-        submap: null
+        icon: https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Google_Maps_pin.svg/274px-Google_Maps_pin.svg.png
         sound:
           url: /sounds/Claw/SPTL007.mp3
           loop: true
@@ -348,8 +273,6 @@ items:
         z: 0.690
         size: 4
         offset_y: -2
-        elevation: 0
-        range: 1
     sound:
      url: /sounds/MemChu/SPTL014.mp3
      loop: true
@@ -359,5 +282,3 @@ items:
     z: 0.699
     size: 4
     offset_y: -2
-    elevation: 0
-    range: 1

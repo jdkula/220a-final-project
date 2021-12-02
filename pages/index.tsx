@@ -21,16 +21,26 @@ import {
   Card,
   Collapse,
   Container,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  Fade,
+  IconButton,
   LinearProgress,
+  Link,
   Toolbar,
   Typography,
 } from "@mui/material";
 import { Box } from "@mui/system";
+import { Info } from "@mui/icons-material";
 
 const Home: NextPage = () => {
   const [back, setBack] = useState<Map[]>([]);
   const [details, setDetails] = useState<Map | null>(null);
   const [loading, setLoading] = useState(true);
+  const [hidden, setHidden] = useState(false);
+  const [showInfo, setShowInfo] = useState(false);
   const svgEl = useRef<SVGGraphicsElement | null>(null);
   const svgPt = useRef<SVGPoint | null>(null);
   const mapContainer = useRef<MapContainer | null>(null);
@@ -95,8 +105,13 @@ const Home: NextPage = () => {
       console.log(`Clicked item ${item.name}`);
       const submap = mapContainer.current?.clickItem(item);
       if (submap && details) {
-        setBack((back) => [...back, details]);
-        setDetails(submap);
+        // fade through transitions
+        setHidden(true);
+        setTimeout(() => {
+          setBack((back) => [...back, details]);
+          setDetails(submap);
+        }, 100);
+        setTimeout(() => setHidden(false), 500);
       }
     },
     [details]
@@ -114,8 +129,12 @@ const Home: NextPage = () => {
 
   const onBack = useCallback(() => {
     if (back.length > 0) {
-      setDetails(back[back.length - 1]);
-      setBack((back) => back.slice(0, back.length - 1));
+      setHidden(true);
+      setTimeout(() => {
+        setDetails(back[back.length - 1]);
+        setBack((back) => back.slice(0, back.length - 1));
+      }, 100);
+      setTimeout(() => setHidden(false), 500);
     }
   }, [back]);
 
@@ -144,8 +163,60 @@ const Home: NextPage = () => {
           >
             Start
           </Button>
+          <IconButton
+            sx={{ marginLeft: 2, color: "white" }}
+            color="default"
+            onClick={() => setShowInfo(true)}
+          >
+            <Info />
+          </IconButton>
         </Toolbar>
       </AppBar>
+      <Dialog open={showInfo} onClose={() => setShowInfo(false)} maxWidth="md">
+        <DialogTitle>Information</DialogTitle>
+        <DialogContent
+          dividers
+          sx={{ height: "100%", display: "flex", flexDirection: "column" }}
+        >
+          <Typography paragraph>
+            <strong>Stanford Sonic Map</strong>, created by Jonathan Kula for
+            CCRMA’s Music 220A class.
+          </Typography>
+          <Typography paragraph>
+            Sounds were recorded on a Zoom H2n microphone around campus.
+          </Typography>
+          <Typography paragraph>
+            Plug in headphones, and move your mouse around the page– you’ll hear
+            the sounds of Stanford’s campus encoded binaurally around you. Mouse
+            over the icons to get some more information about each location and
+            recording!
+          </Typography>
+          <Typography paragraph>
+            This application is fully modular; you can create your own maps for
+            it. The <Link href="/_map.yaml" target="_blank">current map</Link> is displayed below:
+          </Typography>
+          <Card
+            elevation={2}
+            sx={{
+              overflow: "scroll",
+              flex: 1,
+              background: "#222",
+              color: "#ddd",
+              padding: 3,
+            }}
+          >
+            <ReactMarkdown>{`
+\`\`\`
+${YAML.stringify(details ?? null, { indent: 2 })}
+\`\`\`
+`}</ReactMarkdown>
+          </Card>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setShowInfo(false)}>Close</Button>
+        </DialogActions>
+      </Dialog>
+
       <Collapse in={loading} sx={{ marginBottom: 1 }}>
         <LinearProgress sx={{ width: "100%" }} />
       </Collapse>
@@ -157,50 +228,65 @@ const Home: NextPage = () => {
           alignItems: "center",
         }}
       >
-        <Card variant="elevation" elevation={10}>
-          {details && (
-            <div style={{
-              width: 1000 - ((details.crop_left ?? 0) + (details.crop_right ?? 0)) * 1000,
-              height: 1000 - ((details.crop_top ?? 0) + (details.crop_bottom ?? 0)) * 1000,
-              overflow: 'none'
-            }}>
-              <svg
+        <Fade in={!!details && !loading && !hidden}>
+          <Card variant="elevation" elevation={10}>
+            {details && (
+              <div
                 style={{
-                  position: "relative",
-                  userSelect: "none",
-                  width: 1000,
-                  height: 1000,
-                  top: (details.crop_top ?? 0) * -1000,
-                  left: (details.crop_left ?? 0) * -1000,
-                  right: (details.crop_right ?? 0) * -1000,
-                  bottom: (details.crop_bottom ?? 0) * -1000,
+                  width:
+                    (1000 -
+                      ((details.crop_left ?? 0) + (details.crop_right ?? 0)) *
+                        1000) *
+                    (details.scale ?? 1),
+                  height:
+                    (1000 -
+                      ((details.crop_top ?? 0) + (details.crop_bottom ?? 0)) *
+                        1000) *
+                    (details.scale ?? 1),
+                  overflow: "none",
                 }}
-                viewBox={`0 0 ${details.width_base} ${details.height_base}`}
-                ref={(el) => {
-                  svgPt.current = el?.createSVGPoint() ?? null;
-                  svgEl.current = el;
-                }}
-                onMouseMove={onMouseMove}
-                onDoubleClick={onDebugClick}
               >
-                <image
-                  href={details.image}
-                  width={details.width_base}
-                  height={details.height_base}
-                  opacity={0.8}
-                />
-                {details.items.map((item) => (
-                  <ItemEl
-                    key={item.name}
-                    item={item}
-                    map={details}
-                    onClick={() => onClick(item)}
+                <svg
+                  style={{
+                    position: "relative",
+                    userSelect: "none",
+                    width: 1000 * (details.scale ?? 1),
+                    height: 1000 * (details.scale ?? 1),
+                    top: (details.crop_top ?? 0) * -1000 * (details.scale ?? 1),
+                    left:
+                      (details.crop_left ?? 0) * -1000 * (details.scale ?? 1),
+                    right:
+                      (details.crop_right ?? 0) * -1000 * (details.scale ?? 1),
+                    bottom:
+                      (details.crop_bottom ?? 0) * -1000 * (details.scale ?? 1),
+                  }}
+                  viewBox={`0 0 1 1`}
+                  ref={(el) => {
+                    svgPt.current = el?.createSVGPoint() ?? null;
+                    svgEl.current = el;
+                  }}
+                  onMouseMove={onMouseMove}
+                  onDoubleClick={onDebugClick}
+                >
+                  <image
+                    href={details.image}
+                    width={1}
+                    height={1}
+                    opacity={0.8}
                   />
-                ))}
-              </svg>
-            </div>
-          )}
-        </Card>
+                  {(details.items ?? []).map((item) => (
+                    <ItemEl
+                      key={item.name}
+                      item={item}
+                      map={details}
+                      onClick={() => onClick(item)}
+                    />
+                  ))}
+                </svg>
+              </div>
+            )}
+          </Card>
+        </Fade>
       </Container>
     </div>
   );
@@ -215,21 +301,23 @@ const ItemEl = ({
   map: Map;
   onClick: (item: MapItem) => void;
 }) => {
-  const width = (map.width_base / 50) * item.size;
-  const height = (map.height_base / 50) * item.size;
+  const width = ((1 / 50) * (item.size ?? 1)) / (map.scale ?? 1);
+  const height = ((1 / 50) * (item.size ?? 1)) / (map.scale ?? 1);
 
   const Base = item.icon ? "image" : "rect";
   const extra = item.icon ? { href: item.icon } : {};
 
-  const x = item.x - width / 2 + ((item.offset_x ?? 0) / item.size) * width;
-  const y = item.z - height / 2 + ((item.offset_y ?? 0) / item.size) * height;
+  const x =
+    item.x - width / 2 + ((item.offset_x ?? 0) / (item.size ?? 1)) * width;
+  const y =
+    item.z - height / 2 + ((item.offset_y ?? 0) / (item.size ?? 1)) * height;
 
   const [tooltipShown, setTooltip] = useState(false);
 
   const [mouseLoc, setMouseLoc] = useState({ x: 0, y: 0 });
 
   const md = useMemo(
-    () => <ReactMarkdown>{item.details}</ReactMarkdown>,
+    () => <ReactMarkdown>{item.details ?? ""}</ReactMarkdown>,
     [item]
   );
 

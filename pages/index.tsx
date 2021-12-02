@@ -360,6 +360,7 @@ const ItemEl = ({
               background: "white",
               padding: "10px",
               opacity: 0.7,
+              maxWidth: '30vw'
             }}
           >
             {md}
